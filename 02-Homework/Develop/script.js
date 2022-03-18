@@ -8,37 +8,42 @@ function generatePassword() {
   let special = ["@", "$", "#", "%", "(", ")", "-", "^", "&", "*", "_", "=", "+"];
   let endPass = [];
   let emptyArr = [];
-  upperChar[1];
   let lengthPrompt = prompt("Choose a password length between 8 and 128 characters");
-  let upperPrompt = confirm("Would you like to include uppercase letters in your password?");
-  let lowerPrompt = confirm("Would you like to include lowercase letters in your password?");
-  let numbPrompt = confirm("Would you like to include numbers in your password?");
-  let specialPrompt = confirm("Would you like to include special characters in your password?");
 
-  // 
+  if (lengthPrompt >= 7 && lengthPrompt <= 128) {
+    let upperPrompt = confirm("Would you like to include uppercase letters in your password?");
+    let lowerPrompt = confirm("Would you like to include lowercase letters in your password?");
+    let numbPrompt = confirm("Would you like to include numbers in your password?");
+    let specialPrompt = confirm("Would you like to include special characters in your password?");
 
-  if (upperPrompt) {
-    endPass = endPass.concat(upperChar);
+
+
+    if (upperPrompt) {
+      endPass = endPass.concat(upperChar);
+    }
+
+    if (lowerPrompt) {
+      endPass = endPass.concat(lowerChar);
+    }
+
+    if (numbPrompt) {
+      endPass = endPass.concat(numbers);
+    }
+
+    if (specialPrompt) {
+      endPass = endPass.concat(special);
+    }
+
+    for (var i = 0; i < lengthPrompt; i++) {
+
+      emptyArr.push(endPass[Math.floor(Math.random() * endPass.length)]);
+    }
+
+    return emptyArr.join("");
   }
-
-  if (lowerPrompt) {
-    endPass = endPass.concat(lowerChar);
+  else {
+    alert("Your password must be a length between 8 and 128 characters")
   }
-
-  if (numbPrompt) {
-    endPass = endPass.concat(numbers);
-  }
-
-  if (specialPrompt) {
-    endPass = endPass.concat(special);
-  }
-  console.log(endPass);
-
-  //if (lengthPrompt > 7 && lengthPrompt < 128) {
- 
-  //} else {
-  // alert("Your password must be a length between 8 and 128 characters")
-  //}
 }
 
 // Write password to the #password input
